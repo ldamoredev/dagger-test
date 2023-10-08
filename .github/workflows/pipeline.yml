@@ -24,9 +24,7 @@ jobs:
           yarn install
       -
         name: Dagger
-        uses: dagger/dagger-for-github@v4
-        with:
-          install-only: true
+        run: curl -L https://dl.dagger.io/dagger/install.sh | sh
       - name: xd
         run: |
-          dagger-cue --help
+          dagger --help
