@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
