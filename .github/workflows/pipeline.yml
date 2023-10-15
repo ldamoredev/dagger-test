@@ -9,10 +9,22 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      -
+        name: Checkout
         uses: actions/checkout@v3
-      - name: Dagger
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          cache-dependency-path: |
+            yarn.lock
+      - name: Install dependencies
+        run: |
+          yarn install
+      -
+        name: Dagger
         run: curl -L https://dl.dagger.io/dagger/install.sh | sh
       - name: Run tests
         run: |
-          ./bin/dagger run node ci/index.js
+          ./bin/dagger run node --loader ts-node/esm ci/index.mts
